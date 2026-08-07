@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+  CANCELLED
+}
+
+enum WaitlistStatus {
+  WAITING
+  PROMOTED
+  REMOVED
+}
+
+model User {
+  id               String             @id @default(uuid())
+  name             String
+  email            String             @unique
+  role             Role               @default(STUDENT)
+  firebaseUid      String             @unique
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  bookings         Booking[]
+  waitlistEntries  WaitlistEntry[]
+  adminLogs        AdminActivityLog[]
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  location    String
+  category    String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  slots       Slot[]
+}
+
+model Slot {
+  id              String          @id @default(uuid())
+  resourceId      String
+  resource        Resource        @relation(fields: [resourceId], references: [id])
+  date            DateTime        @db.Date
+  startTime       DateTime        @db.Time
+  endTime         DateTime        @db.Time
+  capacity        Int
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  bookings        Booking[]
+  waitlistEntries WaitlistEntry[]
+}
+
+model Booking {
+  id        String        @id @default(uuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id])
+  slotId    String
+  slot      Slot          @relation(fields: [slotId], references: [id])
+  status    BookingStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model WaitlistEntry {
+  id        String         @id @default(uuid())
+  userId    String
+  user      User           @relation(fields: [userId], references: [id])
+  slotId    String
+  slot      Slot           @relation(fields: [slotId], references: [id])
+  status    WaitlistStatus @default(WAITING)
+  position  Int            @default(autoincrement())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model AdminActivityLog {
+  id         String   @id @default(uuid())
+  adminId    String
+  admin      User     @relation(fields: [adminId], references: [id])
+  action     String
+  entityType String
+  entityId   String
+  createdAt  DateTime @default(now())
+}
