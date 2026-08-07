@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Calendar, Clock, MapPin, XCircle, CheckCircle, Clock3, 
+  Clock, MapPin, XCircle, CheckCircle, Clock3, 
   Loader2, ArrowRight, LayoutDashboard, BookmarkX, Plus,
-  Inbox, Settings, AlertCircle, User, LogOut, ChevronRight
+  Inbox, Settings, AlertCircle, LogOut
 } from 'lucide-react';
 import apiClient from '../api/apiClient';
 import { useAuth } from '../context/AuthContext';
@@ -134,7 +134,7 @@ export const DashboardPage: React.FC = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
   };
 
   return (

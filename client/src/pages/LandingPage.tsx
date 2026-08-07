@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, Calendar, Clock, ShieldCheck, ArrowRight, Laptop, Building, BookOpen } from 'lucide-react';
+import { ChevronRight, Calendar, Clock, ShieldCheck, ArrowRight, Laptop } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 

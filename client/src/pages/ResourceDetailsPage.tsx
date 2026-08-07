@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, MapPin, Calendar, Clock, Users, ShieldCheck, Loader2 } from 'lucide-react';
+import { ArrowLeft, MapPin, Calendar, Users, ShieldCheck, Loader2 } from 'lucide-react';
 import apiClient from '../api/apiClient';
 import { useAuth } from '../context/AuthContext';
 
@@ -272,7 +272,6 @@ export const ResourceDetailsPage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {slots.filter(s => new Date(s.date).toDateString() === selectedDate).map(slot => {
                   const startTime = new Date(slot.startTime).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-                  const endTime = new Date(slot.endTime).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
                   const isFull = slot.availableCapacity <= 0;
                   const isSelected = selectedSlotId === slot.id;
 
