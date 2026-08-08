@@ -53,7 +53,7 @@ export const LandingPage: React.FC = () => {
                 Campus Resource Booking System
               </span>
             </div>
-            <h1 className="font-display text-[56px] md:text-[80px] font-black tracking-tighter text-[#0a1b33] leading-[1.05]">
+            <h1 className="font-display text-[42px] sm:text-[56px] md:text-[80px] font-black tracking-tighter text-[#0a1b33] leading-[1.05]">
               <span className="text-blue-600">S</span>paces. <span className="text-blue-600">S</span>ystems.<br />
               <span className="text-blue-600">S</span>chedules.
             </h1>
@@ -84,19 +84,16 @@ export const LandingPage: React.FC = () => {
               <span className="text-[#0a1b33] font-black">✦</span>
             </div>
             
-            <div className="flex items-center px-4 gap-6">
-              <Link to="/resources" className="text-[12px] font-bold text-slate-500 hover:text-[#0a1b33] transition-colors">
+            <div className="flex items-center px-3 sm:px-4 gap-3 sm:gap-6">
+              <Link to="/resources" className="hidden sm:block text-[12px] font-bold text-slate-500 hover:text-[#0a1b33] transition-colors">
                 Resources
-              </Link>
-              <Link to="/dashboard" className="text-[12px] font-bold text-slate-500 hover:text-[#0a1b33] transition-colors">
-                My Bookings
               </Link>
               <Link to="/dashboard" className="text-[12px] font-bold text-slate-500 hover:text-[#0a1b33] transition-colors">
                 Dashboard
               </Link>
             </div>
 
-            <Link to="/register" className="ml-2">
+            <Link to="/register" className="ml-1 sm:ml-2">
               <div className="bg-white px-5 py-2 rounded-full text-[12px] font-bold text-[#0a1b33] border border-slate-200/60 shadow-sm hover:border-slate-300 transition-all flex items-center gap-1 group">
                 Get Started
                 <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0a1b33] transition-colors" />

@@ -138,7 +138,7 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="flex h-full w-full bg-[#f4f7f9] overflow-hidden">
+    <div className="flex flex-col md:flex-row h-screen w-full bg-[#f4f7f9] overflow-hidden">
       
       {/* Premium Sidebar (Dark Theme) */}
       <aside className="w-[280px] bg-[#0a152d] text-white flex-col hidden md:flex shrink-0 border-r border-[#1a2642] relative z-20 shadow-xl shadow-blue-900/10">
